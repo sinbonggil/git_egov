@@ -33,13 +33,16 @@
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml</param-value>
+      <param-value>/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml,
+      			    /WEB-INF/config/egovframework/springmvc/servlet-context.xml
+      </param-value>
+      
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
