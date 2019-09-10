@@ -25,8 +25,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><spring:message code="title.sample" /></title>
     <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
+    <script type="text/javascript" src="/egov_web/js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/egov_web/js/jquery-3.4.1.min.js"></script>
     <script type="text/javaScript" language="javascript" defer="defer">
-        <!--
+        
         /* 글 수정 화면 function */
         function fn_egov_select(id) {
         	document.listForm.selectedId.value = id;
@@ -53,10 +55,32 @@
            	document.listForm.submit();
         }
         
-        //-->
+        
+	
+
+        
     </script>
 </head>
-
+<script>
+function mybatisTest(){
+	$.ajax({
+	    url: "test.do",
+	    type: "POST",
+	    cache: false,
+	    dataType: "json",
+	    data: "no=1" ,
+	    success: function(data){
+	      alert("성공");
+	},
+  
+  	error: function (request, status, error){        
+      	var msg = "ERROR : " + request.status + "<br>"
+    	msg +=  + "내용 : " + request.responseText + "<br>" + error;
+    	console.log(msg);              
+  	}
+});
+}
+</script>
 <body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
     <form:form commandName="searchVO" id="listForm" name="listForm" method="post">
         <input type="hidden" name="selectedId" />
@@ -135,6 +159,10 @@
                   </li>
               </ul>
         	</div>
+        	
+        	
+        			<input type="button" id="button1" onclick="mybatisTest();" value="테스트" />
+        	          
         </div>
     </form:form>
 </body>
