@@ -20,7 +20,7 @@ public class NsinService {
 	/**
      *  SELECT
 	 */
-	public Map<String, Object> selectList(Map<String, String> param) throws Exception {
+	public Map<String, Object> selectList(Map<String, Object> param) throws Exception {
 		
 		logger.info("param ::: {}", param);
 		Map<String, Object> map = new HashMap<>();
@@ -35,6 +35,7 @@ public class NsinService {
 			map.put("success", "-1");
 			map.put("message", "오류발생");
 			logger.info("임시저장내역 조회 오류발생 INPUT PARAMS: {}", param);
+			e.printStackTrace();
 		}
 		
 		return map;
@@ -51,6 +52,7 @@ public class NsinService {
 			map.put("success", "0");
 			return nsinMapper.insertList(param);
 		}catch(Exception e) {
+			e.printStackTrace();
 			map.put("success", "-1");
 			map.put("message", "오류발생");
 			logger.info("임시저장내역 조회 오류발생 INPUT PARAMS: {}", param);

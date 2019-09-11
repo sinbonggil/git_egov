@@ -54,9 +54,10 @@ public class NsinController {
 	 * @exception Exception
 	 */
 	@RequestMapping(value="/selectList", method=RequestMethod.POST)
-	public Map<String, Object> selectList(@RequestBody Map<String, String >param, HttpServletRequest request) throws Exception {
+	public Map<String, Object> selectList(@RequestBody Map<String, Object >param, HttpServletRequest request) throws Exception {
 		
-		LOGGER.debug("select list");
+		LOGGER.debug("select list : " + param.toString());
+		
 		Map<String, Object> retObj = nsinService.selectList(param); 
 		
 		return retObj;
@@ -77,11 +78,13 @@ public class NsinController {
 		int cnt = nsinService.InsertList(param);
 		if(cnt > 0) {
 			retObj.put("result", "Y");
+			retObj.put("cnt", cnt);
 			
 		}else {
 			
 			retObj.put("result", "fail");
 		}
+		LOGGER.debug(retObj.toString());
 		return retObj;
 		
 	}
