@@ -18,7 +18,7 @@ public class NsinService {
 	NsinMapper nsinMapper;
 	
 	/**
-     *  조회
+     *  SELECT
 	 */
 	public Map<String, Object> selectList(Map<String, String> param) throws Exception {
 		
@@ -38,5 +38,44 @@ public class NsinService {
 		}
 		
 		return map;
+	}
+	/**
+	 *  INSERT
+	 */
+	public int InsertList(Map<String, String> param) throws Exception {
+		
+		logger.info("param ::: {}", param);
+		Map<String, Object> map = new HashMap<>();
+		
+		try {
+			map.put("success", "0");
+			return nsinMapper.insertList(param);
+		}catch(Exception e) {
+			map.put("success", "-1");
+			map.put("message", "오류발생");
+			logger.info("임시저장내역 조회 오류발생 INPUT PARAMS: {}", param);
+			return 0;
+		}
+		
+	}
+	/**
+	 *  UPDATE
+	 */
+	public int UpdateList(Map<String, String> param) throws Exception {
+		
+		logger.info("param ::: {}", param);
+		Map<String, Object> map = new HashMap<>();
+		
+		try {
+			map.put("success", "0");
+			return nsinMapper.updateList(param);
+		}catch(Exception e) {
+			map.put("success", "-1");
+			map.put("message", "오류발생");
+			logger.info("임시저장내역 조회 오류발생 INPUT PARAMS: {}", param);
+			return 0;
+		}
+		
+		
 	}
 }

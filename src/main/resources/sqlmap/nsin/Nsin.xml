@@ -3,8 +3,41 @@
 <mapper namespace="nsin.mapper.NsinMapper">
 
 	<!-- 임시저장내역 조회 -->
-	<select id="selectTempSaveList" parameterType="hashmap" resultType="hashmap">
-	SELECT "A" AS a from dual
-	</select>
+	<select id="selectList" parameterType="hashmap" resultType="hashmap">
+	SELECT ID 			as id
+	     , NAME 		as name
+	     , DESCRIPTION 	as description
+	     , USE_YN       as useYn
+	     , REG_USER     as regUser
+	  FROM SAMPLE 
 	
+	</select>
+	<insert id="insertList" parameterType="hashmap">
+	INSERT INTO sample
+    (
+        ID,
+        NAME,
+        DESCRIPTION,
+        USE_YN,
+        REG_USER
+    )
+    VALUES
+    (
+        #{id},
+        #{name} ,
+        #{des} ,
+        #{useYn} ,
+        #{regUser} 
+    );
+	</insert>
+	<update id="updateList" parameterType="hashmap">
+	UPDATE SAMPLE SET
+    	   NAME 		= #{name},
+    	   DESCRIPTION 	= #{des},
+    	   USE_YN 		= #{useYn},
+    	   REG_USER 	= #{regUser}
+	  <where>
+			ID = #{id}
+		</where>
+	</update>
 </mapper>

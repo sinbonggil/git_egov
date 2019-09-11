@@ -47,7 +47,7 @@ public class NsinController {
 	
 	
 	/**
-	 * 조회 예제  
+	 * SELECT 예제  
 	 * @param VO - 조회할 정보가 담긴 VO
 	 * @param 
 	 * @return "egovSampleList"
@@ -57,7 +57,54 @@ public class NsinController {
 	public Map<String, Object> selectList(@RequestBody Map<String, String >param, HttpServletRequest request) throws Exception {
 		
 		LOGGER.debug("select list");
+		Map<String, Object> retObj = nsinService.selectList(param); 
+		
+		return retObj;
+		
+	}
+	/**
+	 * INSERT 예제  
+	 * @param VO - 조회할 정보가 담긴 VO
+	 * @param 
+	 * @return "egovSampleList"
+	 * @exception Exception
+	 */
+	@RequestMapping(value="/insertList", method=RequestMethod.POST)
+	public Map<String, Object> InsertList(@RequestBody Map<String, String >param, HttpServletRequest request) throws Exception {
+		
+		LOGGER.debug("insert");
 		Map<String, Object> retObj = null; 
+		int cnt = nsinService.InsertList(param);
+		if(cnt > 0) {
+			retObj.put("result", "Y");
+			
+		}else {
+			
+			retObj.put("result", "fail");
+		}
+		return retObj;
+		
+	}
+	/**
+	 * UPDATE 예제  
+	 * @param VO - 조회할 정보가 담긴 VO
+	 * @param 
+	 * @return "egovSampleList"
+	 * @exception Exception
+	 */
+	@RequestMapping(value="/updateList", method=RequestMethod.POST)
+	public Map<String, Object> UpdateList(@RequestBody Map<String, String >param, HttpServletRequest request) throws Exception {
+		
+		LOGGER.debug("update");
+		Map<String, Object> retObj = null; 
+		int cnt = nsinService.UpdateList(param);
+		if(cnt > 0) {
+			retObj.put("result", "Y");
+			
+		}else {
+			
+			retObj.put("result", "fail");
+		}
 		
 		return retObj;
 		
@@ -83,7 +130,7 @@ public class NsinController {
 	@RequestMapping(value = "/index")
 	public String selectSampleList(ModelMap model) throws Exception {
 		System.out.println("요기");
-		return "forward:/indexTest";
+		return "/nsin/indexTest";
 		
 	}
 	
