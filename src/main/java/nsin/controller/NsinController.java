@@ -83,7 +83,7 @@ public class NsinController {
 	@RequestMapping(value = "/index")
 	public String selectSampleList(ModelMap model) throws Exception {
 		System.out.println("요기");
-		return "forward:/selectList";
+		return "forward:/indexTest";
 		
 	}
 	
