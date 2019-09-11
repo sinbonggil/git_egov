@@ -38,9 +38,10 @@ function SELECT(){
 	 });
 }
 function INSERT(){
-	  
+	var Now = new Date();
+	console.log("현재시간 : " +Now  );
 	var jsonObject = {
-			"id" 		: "sample-111",
+			"id" 		: "sample-"+Now.getSeconds(),
 			"name" 		: "insertT11110",
 			"des" 		: "insert",
 			"useYn" 	: "Y",
@@ -57,10 +58,10 @@ function INSERT(){
 			url: "./nsin/insertList",
 			type: "POST",
 		    cache: false,
-		    dataType: "json",
+		    dataType: "text",
 		    data: jsonStr,
 		    success: function(data){
-					alert("data : " +data);	    	
+					alert("insert 성공");	    	
 		    },
 		    error: function (request, status, error){        
 		      var msg = "ERROR : " + request.status + "<br>"
@@ -74,7 +75,40 @@ function INSERT(){
 	
 }
 function UPDATE(){
-	alert("update");
+	var Now = new Date();
+	console.log("현재시간 : " +Now  );
+	var jsonObject = {
+			"id" 		: "SAMPLE-00033",
+			"name" 		: "update time",
+			"des" 		: "update",
+			"useYn" 	: "Y",
+			"regUser" 	: "koreaTT"
+	}
+	var jsonStr = JSON.stringify(jsonObject);
+	
+	
+	 $.ajax({
+			headers: { 
+		            'Accept': 'application/json',
+		            'Content-Type': 'application/json' 
+		        },
+			url: "./nsin/updateList",
+			type: "POST",
+		    cache: false,
+		    dataType: "text",
+		    data: jsonStr,
+		    success: function(data){
+					alert("insert 성공");	    	
+		    },
+		    error: function (request, status, error){        
+		      var msg = "ERROR : " + request.status + "<br>"
+		      msg +=  + "내용 : " + request.responseText + "<br>" + error;
+		      console.log(msg);              
+		    }
+		 });
+	
+	
+	alert("insert");
 	
 }
 </script>
