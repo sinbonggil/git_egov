@@ -4,12 +4,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>테스트화면</title>
-  <script type="text/javascript" src="/egov/js/jquery-3.4.1.js"></script>
-  <script type="text/javascript" src="/egov/js/jquery-3.4.1.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.min.js"></script>
 <script type="text/javaScript" language="javascript">
-
-
-
 
 </script>
 
