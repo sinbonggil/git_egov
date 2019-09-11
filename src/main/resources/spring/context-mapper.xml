@@ -8,7 +8,7 @@
 		<property name="configLocation" value="classpath:/sqlmap/sql-mapper-config.xml" />
 		<property name="mapperLocations"> 
 		<list>
-			<value>classpath:/egovframework/sqlmap/nsin/*.xml</value>
+			<value>classpath:/sqlmap/nsin/*.xml</value>
 		</list>
 		</property>
 	</bean>
